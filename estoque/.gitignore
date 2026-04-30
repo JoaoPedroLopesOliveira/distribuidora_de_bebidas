@@ -1,0 +1,47 @@
+### Java ###
+*.class
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### IDEs ###
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache/
+bin/
+
+# VS Code
+.vscode/
+
+### Sistema Operacional ###
+.DS_Store
+Thumbs.db
+
+### Logs ###
+*.log
+
+### Configurações Locais e Secrets (Opcional, mas recomendado) ###
+application-local.properties
+application-local.yml
+.env
