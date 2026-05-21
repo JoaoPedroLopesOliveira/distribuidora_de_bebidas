@@ -24,4 +24,36 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
