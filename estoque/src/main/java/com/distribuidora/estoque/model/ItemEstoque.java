@@ -15,7 +15,7 @@ public class ItemEstoque {
 
     @Enumerated(EnumType.STRING)
     @Column( nullable = false )
-    private Enum<Categoria> categoria;
+    private Categoria categoria;
 
     @Column( nullable = false )
     private String descricao;
