@@ -2,26 +2,23 @@ package com.distribuidora.compras.controller;
 
 import com.distribuidora.compras.model.Compras;
 import com.distribuidora.compras.service.ComprasService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/compras")
-
+@RequestMapping("/api/compras")
+@RequiredArgsConstructor
 public class ComprasController {
 
     private final ComprasService comprasService;
 
-    public ComprasController(ComprasService comprasService) {
-        this.comprasService = comprasService;
-    }
-
     @PostMapping
     public ResponseEntity<Compras> criar(@RequestBody Compras compras) {
-        return ResponseEntity.ok(comprasService.criar(compras));
+        return ResponseEntity.status(HttpStatus.CREATED).body(comprasService.criar(compras));
     }
 
     @GetMapping

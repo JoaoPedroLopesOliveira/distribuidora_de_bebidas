@@ -2,26 +2,29 @@ package com.distribuidora.compras.service;
 
 import com.distribuidora.compras.model.Compras;
 import com.distribuidora.compras.repository.ComprasRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class ComprasService {
 
     private final ComprasRepository comprasRepository;
-
     private final ComprasProducer comprasProducer;
-
-    public ComprasService(ComprasRepository comprasRepository, ComprasProducer comprasProducer) {
-        this.comprasRepository = comprasRepository;
-        this.comprasProducer = comprasProducer;
-    }
 
     public Compras criar(Compras compras) {
         compras.setDataCompra(LocalDateTime.now());
+        compras.setStatus("PENDENTE");
         Compras salva = comprasRepository.save(compras);
-        comprasProducer.enviarCompra(salva.getId(), salva.getQuantidadeComprada());
+        comprasProducer.enviarCompra(
+                String.valueOf(salva.getId()),
+                salva.getIdProduto(),
+                salva.getQuantidadeComprada()
+        );
         return salva;
     }
 
