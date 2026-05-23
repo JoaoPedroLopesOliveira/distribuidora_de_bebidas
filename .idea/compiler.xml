@@ -8,13 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="estoque" />
+        <module name="vendas" />
         <module name="compras" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="gateway" target="21" />
       <module name="usuarios" target="21" />
-      <module name="vendas" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -16,7 +16,6 @@
       <set>
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/usuarios/pom.xml" />
-        <option value="$PROJECT_DIR$/vendas/pom.xml" />
       </set>
     </option>
   </component>
