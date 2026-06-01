@@ -7,6 +7,7 @@ import lombok.*;
 @Entity
 @Table(name = "estoque")
 @Data
+@NoArgsConstructor
 public class ItemEstoque {
 
     @Id
