@@ -33,4 +33,20 @@ public class EstoqueController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ItemEstoque> atualizar(@PathVariable int id, @RequestBody ItemEstoque itemAtualizado) {
+        return repository.findById(id).map(item -> {
+            item.setDescricao(itemAtualizado.getDescricao());
+            item.setCategoria(itemAtualizado.getCategoria());
+            item.setQuantidade(itemAtualizado.getQuantidade());
+            return ResponseEntity.ok(repository.save(item));
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable int id) {
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
