@@ -20,6 +20,7 @@ public class EstoqueKafkaListener {
 
     @KafkaListener(topics = "vendas-iniciadas", groupId = "estoque-group")
     public void processarVenda(String mensagemJson) {
+        String idVenda = obterCampo(mensagemJson, "idVenda");
         try {
             VendaEventDTO evento = objectMapper.readValue(mensagemJson, VendaEventDTO.class);
 
@@ -28,17 +29,17 @@ public class EstoqueKafkaListener {
             String sucesso = String.format("{\"idVenda\": \"%s\", \"status\": \"APROVADO\"}", evento.getIdVenda());
             kafkaTemplate.send("vendas-processadas", sucesso);
 
-        } catch (IllegalStateException e) {
-            String erro = String.format("{\"idVenda\": \"%s\", \"status\": \"REJEITADO\", \"motivo\": \"%s\"}",
-                    obterCampo(mensagemJson, "idVenda"), e.getMessage());
-            kafkaTemplate.send("vendas-processadas", erro);
         } catch (Exception e) {
-            System.err.println("Erro ao processar venda: " + e.getMessage());
+            String erro = String.format("{\"idVenda\": \"%s\", \"status\": \"REJEITADO\", \"motivo\": \"%s\"}",
+                    idVenda, e.getMessage());
+            kafkaTemplate.send("vendas-processadas", erro);
+            System.err.println("Erro ao processar venda " + idVenda + ": " + e.getMessage());
         }
     }
 
     @KafkaListener(topics = "compras-iniciadas", groupId = "estoque-group")
     public void processarCompra(String mensagemJson) {
+        String idCompra = obterCampo(mensagemJson, "idCompra");
         try {
             CompraEventDTO evento = objectMapper.readValue(mensagemJson, CompraEventDTO.class);
 
@@ -48,7 +49,10 @@ public class EstoqueKafkaListener {
             kafkaTemplate.send("compras-processadas", sucesso);
 
         } catch (Exception e) {
-            System.err.println("Erro ao processar compra: " + e.getMessage());
+            String erro = String.format("{\"idCompra\": \"%s\", \"status\": \"FALHA\", \"motivo\": \"%s\"}",
+                    idCompra, e.getMessage());
+            kafkaTemplate.send("compras-processadas", erro);
+            System.err.println("Erro ao processar compra " + idCompra + ": " + e.getMessage());
         }
     }
 

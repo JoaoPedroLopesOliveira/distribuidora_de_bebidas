@@ -5,6 +5,8 @@ import com.distribuidora.compras.repository.ComprasRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ public class ComprasService {
     private final ComprasRepository comprasRepository;
     private final ComprasProducer comprasProducer;
 
+    @Transactional
     public Compras criar(Compras compras) {
         compras.setDataCompra(LocalDateTime.now());
         compras.setStatus("PENDENTE");

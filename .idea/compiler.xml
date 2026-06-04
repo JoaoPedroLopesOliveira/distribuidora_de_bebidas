@@ -14,6 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="gateway" target="21" />
+      <module name="movimentacao" target="21" />
       <module name="usuarios" target="21" />
     </bytecodeTargetLevel>
   </component>

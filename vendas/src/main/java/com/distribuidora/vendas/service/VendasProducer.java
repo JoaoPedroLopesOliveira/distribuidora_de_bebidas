@@ -23,7 +23,7 @@ public class VendasProducer {
             String json = objectMapper.writeValueAsString(evento);
             kafkaTemplate.send("vendas-iniciadas", json);
         } catch (Exception e) {
-            System.err.println("Erro ao enviar evento de venda: " + e.getMessage());
+            throw new RuntimeException("Falha ao enviar evento de venda para o Kafka", e);
         }
     }
 }

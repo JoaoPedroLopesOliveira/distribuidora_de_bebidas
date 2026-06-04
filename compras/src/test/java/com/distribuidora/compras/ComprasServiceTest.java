@@ -37,7 +37,7 @@ class ComprasServiceTest {
     void deveCriarCompraComStatusPendenteEChamarProducer() {
 
         Compras novaCompras = new Compras();
-        novaCompras.setId(1);
+        novaCompras.setId(1L);
         novaCompras.setIdProduto(10);
         novaCompras.setDescricao("Cerveja Heineken");
         novaCompras.setCategoria(Categoria.CERVEJA);
