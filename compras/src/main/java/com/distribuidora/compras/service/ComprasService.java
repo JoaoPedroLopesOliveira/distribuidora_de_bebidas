@@ -19,6 +19,11 @@ public class ComprasService {
     public Compras criar(Compras compras) {
         compras.setDataCompra(LocalDateTime.now());
         compras.setStatus("PENDENTE");
+
+        if (compras.getQuantidadeComprada() <= 0) {
+            throw new IllegalArgumentException("A quantidade comprada deve ser maior que zero.");
+        }
+
         Compras salva = comprasRepository.save(compras);
         comprasProducer.enviarCompra(
                 String.valueOf(salva.getId()),
