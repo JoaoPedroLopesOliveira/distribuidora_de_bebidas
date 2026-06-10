@@ -4,19 +4,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/estoque/pom.xml" />
-        <option value="$PROJECT_DIR$/movimentacao/pom.xml" />
-        <option value="$PROJECT_DIR$/usuarios/pom.xml" />
-        <option value="$PROJECT_DIR$/compras/pom.xml" />
-        <option value="$PROJECT_DIR$/vendas/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/usuarios/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="21" project-jdk-type="JavaSDK">
