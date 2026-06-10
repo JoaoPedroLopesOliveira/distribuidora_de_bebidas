@@ -14,7 +14,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -99,6 +101,6 @@ class ComprasServiceTest {
     void deveRetornarVazioQuandoIdNaoExistir() {
         Mockito.when(comprasRepository.findById(99L)).thenReturn(Optional.empty());
         Optional<Compras> resultado = comprasService.buscarPorId(99L);
-        assertFalse(resultado.isEmpty());
+        assertTrue(resultado.isEmpty());
     }
 }
