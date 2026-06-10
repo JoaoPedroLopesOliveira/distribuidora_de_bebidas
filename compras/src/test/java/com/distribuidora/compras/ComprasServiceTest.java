@@ -83,4 +83,22 @@ class ComprasServiceTest {
 
         Mockito.verify(comprasProducer, Mockito.never()).enviarCompra(anyString(), anyInt(), anyInt());
     }
+    @Test
+    void deveRetornarCompraPorIdQuandoExistir() {
+        Compras compra = new Compras();
+        compra.setId(1L);
+        Mockito.when(comprasRepository.findById(1L)).thenReturn(Optional.of(compra));
+
+        Optional<Compras> resultado = comprasService.buscarPorId(1L);
+
+        assertTrue(resultado.isPresent());
+        assertEquals(1L, resultado.get().getId());
+    }
+
+    @Test
+    void deveRetornarVazioQuandoIdNaoExistir() {
+        Mockito.when(comprasRepository.findById(99L)).thenReturn(Optional.empty());
+        Optional<Compras> resultado = comprasService.buscarPorId(99L);
+        assertFalse(resultado.isEmpty());
+    }
 }
